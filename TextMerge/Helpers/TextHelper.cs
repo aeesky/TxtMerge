@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.IO;
+using System.Windows.Media;
 
 namespace TextMerge.Helpers
 {
@@ -37,9 +38,9 @@ namespace TextMerge.Helpers
             {
                 if (isAll)
                 {
-                    table.Columns.Add("第一列");
+                    table.Columns.Add("0",typeof(double));
                 }
-                table.Columns.Add(Directory.GetParent(file).Name);
+                table.Columns.Add(Directory.GetParent(file).Name,typeof(double));
                 #region 添加列头
                 var head = table.NewRow();
                 for (int i = 0; i < table.Columns.Count; i++)
@@ -59,12 +60,12 @@ namespace TextMerge.Helpers
                             var row = table.NewRow();
                             if (isAll)
                             {
-                                row[0] = data[0];
-                                row[1] = data[1];
+                                row[0] = Convert.ToDouble(data[0]);
+                                row[1] = Convert.ToDouble(data[1]);
                             }
                             else
                             {
-                                row[0] = data[1];
+                                row[0] = Convert.ToDouble(data[1]);
                             }
                             table.Rows.Add(row);
                         }

@@ -60,24 +60,7 @@ namespace TextMerge.Helpers
         {
             FilePath = filepath;
             _hssfworkbook = new HSSFWorkbook();
-            #region 右击文件 属性信息
-            {
-                var dsi = PropertySetFactory.CreateDocumentSummaryInformation();
-                dsi.Company = "浙江华东工程安全技术有限公司";
-                _hssfworkbook.DocumentSummaryInformation = dsi;
-
-                var si = PropertySetFactory.CreateSummaryInformation();
-                si.Author = "林彬彬"; //填加xls文件作者信息
-                si.ApplicationName = "全站仪自动化监测系统"; //填加xls文件创建程序信息
-                si.LastAuthor = "林彬彬"; //填加xls文件最后保存者信息
-                si.Comments = "监测成果表"; //填加xls文件作者信息
-                si.Title = "监测成果表"; //填加xls文件标题信息
-                si.Subject = "地铁保护区监测成果表";//填加文件主题信息
-                si.CreateDateTime = DateTime.Now;
-                _hssfworkbook.SummaryInformation = si;
-            }
             _hssfworkbook.CreateSheet("sheet1");
-            #endregion
 
             try
             {
